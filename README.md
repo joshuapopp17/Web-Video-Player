@@ -9,4 +9,7 @@
 - PHP to manage the API
 - Local JSON to store the current data of the page
 
+## Running the Project
+1) to run the project run XAMPP and open the directory with localhost
+2) Enjoy. 🙂
 
