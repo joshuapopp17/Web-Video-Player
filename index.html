@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>CPSC431 Final Project</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/stylesheet.css">
+    <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+
+<body>
+    <div style="display: flex; flex-direction: row; gap: 20px">
+        <div style="flex: 2">
+            <div class="video-player-container">
+                <div id="player"></div>
+                <div id="button-container">
+                    <button id="previous" class="media-button">Previous</button>
+                    <button id="start"  class="media-button">Start</button>
+                    <button id="pause" class="media-button">Pause</button>
+                    <button id="stop" class="media-button">Stop</button>
+                    <button id="next" class="media-button">Next</button>
+                  </div>
+            </div>
+            <div>
+              <h1>Video Player Info:</h1>
+              <p>When the video ends, the next video loads automatically.</p>
+              <p>Click on any image/thumbnail to load that video</p>
+              <br>
+              <li>NEXT: gets next video in playlist</li>
+              <li>PREVIOUS: gets previous video in playlist</li>
+              <br>
+              <li>Add to playlist: POST</li>
+              <li>Remove from playlist: DELETE</li>
+              <li>Mark as played: PUT</li>
+              <p>Use "move up" and "move down" to change playlist arrangement.</p>
+            </div>  
+        </div>
+        <div style="flex: 1;" class="video-list">
+            <h1>Your Playlist</h1>
+            <div id="playlist-container">
+            </div>
+        </div>
+        <div style="flex: 1;" class="video-list">
+            <h1>Available Videos</h1>
+            <div id="available-container">
+            </div>
+        </div>
+    </div>
+    <script>
+        // !!! This code snippet is directly from the iFrame API website provided by Youtube !!!
+        var player;
+        function onYouTubeIframeAPIReady() {
+          player = new YT.Player('player', {
+            height: '390',
+            width: '640',
+            videoId: 'jNQXAC9IVRw',
+            playerVars: {
+              'playsinline': 1
+            },
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange
+            }
+          });
+        }
+        function onPlayerReady(event) {
+          
+        }
+        function onPlayerStateChange(event) {
+          console.log(event.data)
+          if (event.data == 0) {
+            getNextVideo()
+          }
+        }
+    </script>
+    <script src="playlist.js"></script>
+    <script src="videoplayer.js"></script>
+</body>
+
+</html>
